@@ -1,6 +1,6 @@
 // 🎶 Nhạc nền
 const music = document.getElementById("bgMusic");
-music.volume = 0.2; // âm lượng nhẹ nhàng
+music.volume = 0.2;
 
 // Lặp lại nhạc khi hết
 music.addEventListener("ended", () => {
@@ -8,7 +8,7 @@ music.addEventListener("ended", () => {
     music.play();
 });
 
-// 👉 Chỉ phát nhạc khi click lần đầu (lúc tạo pháo hoa)
+// 👉 Chỉ phát nhạc khi click
 document.addEventListener("click", () => {
     if (music.paused) {
         music.play().catch(err => console.log("Autoplay bị chặn:", err));
@@ -85,14 +85,14 @@ let msgIndex = 0;
 
 function typeWriter(elementId, speed = 100, delay = 5000) {
     const element = document.getElementById(elementId);
-    const audio = new Audio("sound/type.mp3"); // âm thanh gõ phím
+    const audio = new Audio("sound/type.mp3");
     let i = 0;
     let text = messages[msgIndex];
 
     function typing() {
         if (i < text.length) {
             element.textContent += text.charAt(i);
-            audio.currentTime = 0; // reset để phát liên tục
+            audio.currentTime = 0;
             audio.play();
             i++;
             setTimeout(typing, speed);
@@ -109,7 +109,6 @@ function typeWriter(elementId, speed = 100, delay = 5000) {
             i--;
             setTimeout(deleting, speed / 2);
         } else {
-            // 🔄 Đổi sang câu chúc mới
             msgIndex = (msgIndex + 1) % messages.length;
             text = messages[msgIndex];
             setTimeout(typing, 1000);
@@ -216,7 +215,7 @@ function createGift() {
     setTimeout(() => gift.remove(), 6000);
 }
 
-// ⏱ Xuất hiện hộp quà ngẫu nhiên 5–10 giây
+// Xuất hiện hộp quà ngẫu nhiên 5–10 giây
 setInterval(createGift, 700);
 
 // Hiệu ứng confetti
