@@ -1,10 +1,20 @@
-// 🎶 Nhạc nền lặp lại khi phát xong
+// 🎶 Nhạc nền
 const music = document.getElementById("bgMusic");
+music.volume = 0.2; // âm lượng nhẹ nhàng
+
+// Lặp lại nhạc khi hết
 music.addEventListener("ended", () => {
     music.currentTime = 0;
     music.play();
 });
-music.volume = 0.2; // âm lượng nhẹ nhàng
+
+// 👉 Chỉ phát nhạc khi click lần đầu (lúc tạo pháo hoa)
+document.addEventListener("click", () => {
+    if (music.paused) {
+        music.play().catch(err => console.log("Autoplay bị chặn:", err));
+    }
+}, { once: true });
+
 
 function fadeVolumeDown(upAfter = true) {
     let fade = setInterval(() => {
