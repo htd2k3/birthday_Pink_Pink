@@ -43,7 +43,7 @@ document.addEventListener("click", () => {
 });
 
 
-// 📸 Ảnh random 5s, không lặp lại cho đến khi hết
+// 📸 Ảnh random, không lặp lại cho đến khi hết
 const images = ["anh1.jpg", "anh2.jpg", "anh3.jpg", "anh4.jpg", "anh5.jpg",
     "anh6.jpg", "anh7.jpg", "anh8.jpg", "anh9.jpg", "anh10.jpg", "anh11.jpg"];
 let usedImages = [];
@@ -69,7 +69,7 @@ function changeImage() {
     usedImages.push(randomImg);
     textElement.textContent = texts[Math.floor(Math.random() * texts.length)];
 }
-setInterval(changeImage, 4000);
+setInterval(changeImage, 3000);
 
 // 🎶 Danh sách câu chúc
 const messages = [
